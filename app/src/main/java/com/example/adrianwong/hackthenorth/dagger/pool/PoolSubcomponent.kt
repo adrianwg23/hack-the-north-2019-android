@@ -1,9 +1,10 @@
 package com.example.adrianwong.hackthenorth.dagger.pool
 
-import dagger.Component
+import com.example.adrianwong.hackthenorth.pool.PoolFragment
+import dagger.Subcomponent
 
 @PoolScope
-@Component
+@Subcomponent(modules = [PoolModule::class])
 interface PoolSubcomponent {
-    
+    fun inject(poolFragment: PoolFragment)
 }

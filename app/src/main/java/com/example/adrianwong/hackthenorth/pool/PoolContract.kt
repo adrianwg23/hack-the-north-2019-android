@@ -10,7 +10,7 @@ interface PoolContract {
     }
 
     interface Presenter {
-        fun onAttach()
+        fun attachView(view: View)
 
         fun submitDonation()
     }
