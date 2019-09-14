@@ -105,7 +105,7 @@ class PoolFragment : Fragment(), PoolContract.View {
             dialog.dismiss()
 
         }
-        builder.show();
+        builder.show()
     }
 
 }
