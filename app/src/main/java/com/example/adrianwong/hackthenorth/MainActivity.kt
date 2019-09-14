@@ -4,22 +4,27 @@ import android.os.Bundle
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import android.widget.TextView
+import com.example.adrianwong.hackthenorth.dashboard.DashboardFragment
+import com.example.adrianwong.hackthenorth.individual.IndividualFragment
+import com.example.adrianwong.hackthenorth.pool.PoolFragment
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var textMessage: TextView
     private val onNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId) {
-            R.id.navigation_home -> {
-                textMessage.setText(R.string.title_home)
+            R.id.navigation_pool -> {
+                val poolFragment = PoolFragment()
+                supportFragmentManager.beginTransaction().replace(R.id.container, poolFragment, "")
+                return@OnNavigationItemSelectedListener true
+            }
+            R.id.navigation_individual -> {
+                val individualFragment = IndividualFragment()
+                supportFragmentManager.beginTransaction().replace(R.id.container, individualFragment, "")
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_dashboard -> {
-                textMessage.setText(R.string.title_dashboard)
-                return@OnNavigationItemSelectedListener true
-            }
-            R.id.navigation_notifications -> {
-                textMessage.setText(R.string.title_notifications)
+                val dashboardFragment = DashboardFragment()
+                supportFragmentManager.beginTransaction().replace(R.id.container, dashboardFragment, "")
                 return@OnNavigationItemSelectedListener true
             }
         }
@@ -30,8 +35,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         val navView: BottomNavigationView = findViewById(R.id.nav_view)
-
-        textMessage = findViewById(R.id.message)
         navView.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener)
     }
 }
