@@ -14,17 +14,17 @@ class MainActivity : AppCompatActivity() {
         when (item.itemId) {
             R.id.navigation_pool -> {
                 val poolFragment = PoolFragment()
-                supportFragmentManager.beginTransaction().replace(R.id.container, poolFragment, "")
+                supportFragmentManager.beginTransaction().replace(R.id.container, poolFragment, "").commit()
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_individual -> {
                 val individualFragment = IndividualFragment()
-                supportFragmentManager.beginTransaction().replace(R.id.container, individualFragment, "")
+                supportFragmentManager.beginTransaction().replace(R.id.container, individualFragment, "").commit()
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_dashboard -> {
                 val dashboardFragment = DashboardFragment()
-                supportFragmentManager.beginTransaction().replace(R.id.container, dashboardFragment, "")
+                supportFragmentManager.beginTransaction().replace(R.id.container, dashboardFragment, "").commit()
                 return@OnNavigationItemSelectedListener true
             }
         }
@@ -34,6 +34,8 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        val poolFragment = PoolFragment()
+        supportFragmentManager.beginTransaction().replace(R.id.container, poolFragment, "").commit()
         val navView: BottomNavigationView = findViewById(R.id.nav_view)
         navView.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener)
     }
