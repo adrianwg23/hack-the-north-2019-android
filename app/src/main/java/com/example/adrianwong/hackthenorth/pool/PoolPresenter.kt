@@ -1,6 +1,8 @@
 package com.example.adrianwong.hackthenorth.pool
 
-class PoolPresenter(private val view: PoolContract.View) : PoolContract.Presenter {
+import com.example.adrianwong.hackthenorth.repository.PoolRepositoryImpl
+
+class PoolPresenter(private val poolRepository: PoolRepositoryImpl) : PoolContract.Presenter {
     override fun onAttach() {
 
     }
