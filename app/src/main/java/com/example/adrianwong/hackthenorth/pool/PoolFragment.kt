@@ -1,5 +1,6 @@
 package com.example.adrianwong.hackthenorth.pool
 
+import android.app.AlertDialog
 import android.content.Context
 import android.os.Bundle
 import android.text.Editable
@@ -94,4 +95,20 @@ class PoolFragment : Fragment(), PoolContract.View {
         presenter = liveAgentPresenter
 
     }
+
+    fun showCreateCategoryDialog() {
+
+        val builder = AlertDialog.Builder(context)
+        builder.setTitle("Payment Transaction")
+
+        val view = layoutInflater.inflate(R.layout.fragment_modal_success, null)
+        builder.setView(view)
+
+        builder.setPositiveButton(android.R.string.ok) { dialog, _ ->
+            dialog.dismiss()
+
+        }
+        builder.show();
+    }
+
 }
