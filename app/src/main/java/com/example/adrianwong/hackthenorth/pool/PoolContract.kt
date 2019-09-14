@@ -7,6 +7,8 @@ interface PoolContract {
 
         fun donationError()
 
+        fun makeToast(value: String)
+
     }
 
     interface Presenter {
