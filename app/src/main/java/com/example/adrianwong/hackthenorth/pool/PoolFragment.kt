@@ -91,8 +91,6 @@ class PoolFragment : Fragment(), PoolContract.View {
     }
 
     private fun setupPresenter() {
-        val liveAgentPresenter = PoolPresenter(this)
-        presenter = liveAgentPresenter
 
     }
 
