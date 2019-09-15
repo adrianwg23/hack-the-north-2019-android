@@ -1,5 +1,6 @@
 package com.example.adrianwong.hackthenorth.individual
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
@@ -25,6 +26,7 @@ class IndividualFragment : Fragment() {
     companion object {
         const val EXTRA_UUID: String = "uuid"
         const val EXTRA_LAYOUT_COUNTER: String = "layout"
+        const val REQUEST_CODE = 9999
     }
 
     @Inject
@@ -51,7 +53,7 @@ class IndividualFragment : Fragment() {
         if (currentState == 0) {
             openScanner.setOnClickListener {
                 val intent = Intent(activity, BarCodeScannerActivity::class.java)
-                activity?.startActivity(intent)
+                startActivityForResult(intent, REQUEST_CODE)
             }
         } else {
             recieverId = arguments?.getString(EXTRA_UUID) ?: ""
@@ -59,6 +61,23 @@ class IndividualFragment : Fragment() {
         }
 
         super.onViewCreated(view, savedInstanceState)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if (requestCode == REQUEST_CODE) {
+            if (resultCode == Activity.RESULT_OK) {
+                val result = data?.getStringExtra("result")
+                result?.let {
+                    if (it != "") {
+                        Toast.makeText(activity, it, Toast.LENGTH_LONG).show()
+                    }
+                }
+            } else {
+                Toast.makeText(activity, "Please try again", Toast.LENGTH_LONG).show()
+            }
+        }
     }
 
     override fun onDestroyView() {
@@ -109,4 +128,5 @@ class IndividualFragment : Fragment() {
         }
 
     }
+
 }

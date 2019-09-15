@@ -61,6 +61,10 @@ class DashboardFragment : Fragment(), DashboardContract.View {
 
     override fun showCurrentPool(currentPool: String, date: String) {
     }
+
+    override fun updateCurrentPool(currentPool: Int) {
+        live_count.text = "$" + currentPool.toString()
+    }
     
     override fun onDestroyView() {
         (activity?.application as MainApplication).releaseDashboardSubcomponent()

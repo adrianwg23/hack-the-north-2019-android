@@ -54,12 +54,10 @@ class BarCodeScannerActivity : AppCompatActivity() {
         detector.detectInImage(image)
             .addOnSuccessListener {
                 if (it.size == 1) {
-                    val bundle = Bundle()
-                    bundle.putString(EXTRA_UUID, it[0].rawValue)
-                    bundle.putBoolean(EXTRA_LAYOUT_COUNTER, true)
-                    val individualFragment = IndividualFragment()
-                    individualFragment.arguments = bundle
-                    supportFragmentManager.beginTransaction().replace(R.id.barcode_container, individualFragment, "").commit()
+                    val intent = Intent()
+                    intent.putExtra("result", it[0].rawValue)
+                    setResult(Activity.RESULT_OK, intent)
+                    finish()
                 }
             }
             .addOnFailureListener {
