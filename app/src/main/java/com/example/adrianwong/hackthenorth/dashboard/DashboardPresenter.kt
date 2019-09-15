@@ -25,6 +25,7 @@ class DashboardPresenter(private val repo: RepositoryImpl) : DashboardContract.P
                     Log.d("henlo", it.localizedMessage)
                 })
         )
+        
     }
 
 }

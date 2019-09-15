@@ -10,27 +10,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e4c123a0-3bef-4fae-86de-b4bf28d223fc" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/adrianwong/hackthenorth/dagger/dashboard/DashboardModule.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/adrianwong/hackthenorth/dagger/dashboard/DashboardScope.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/adrianwong/hackthenorth/dagger/dashboard/DashboardSubcomponent.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/adrianwong/hackthenorth/datamodels/AllPoolWrapper.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/adrianwong/hackthenorth/dagger/individual/DashboardModule.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/adrianwong/hackthenorth/dagger/individual/DashboardScope.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/adrianwong/hackthenorth/dagger/individual/DashboardSubcomponent.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/adrianwong/hackthenorth/dashboard/DashboardAdapter.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/res/layout/dashboard_row.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/adrianwong/hackthenorth/DemoSelectionActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/adrianwong/hackthenorth/DemoSelectionActivity.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/adrianwong/hackthenorth/MainApplication.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/adrianwong/hackthenorth/MainApplication.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/adrianwong/hackthenorth/api/ApiService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/adrianwong/hackthenorth/api/ApiService.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/adrianwong/hackthenorth/dagger/MainComponent.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/adrianwong/hackthenorth/dagger/MainComponent.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/adrianwong/hackthenorth/dagger/application/DataModule.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/adrianwong/hackthenorth/dagger/application/DataModule.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/adrianwong/hackthenorth/dagger/pool/PoolModule.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/adrianwong/hackthenorth/dagger/pool/PoolModule.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/adrianwong/hackthenorth/dagger/pool/PoolSubcomponent.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/adrianwong/hackthenorth/dagger/pool/PoolSubcomponent.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/adrianwong/hackthenorth/dashboard/DashboardContract.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/adrianwong/hackthenorth/dashboard/DashboardContract.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/adrianwong/hackthenorth/dashboard/DashboardFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/adrianwong/hackthenorth/dashboard/DashboardFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/adrianwong/hackthenorth/dashboard/DashboardPresenter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/adrianwong/hackthenorth/dashboard/DashboardPresenter.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/adrianwong/hackthenorth/datamodels/Result.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/adrianwong/hackthenorth/datamodels/CurrentPool.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/adrianwong/hackthenorth/individual/IndividualContract.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/adrianwong/hackthenorth/individual/IndividualContract.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/adrianwong/hackthenorth/individual/IndividualFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/adrianwong/hackthenorth/individual/IndividualFragment.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/adrianwong/hackthenorth/individual/IndividualPresenter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/adrianwong/hackthenorth/individual/IndividualPresenter.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/adrianwong/hackthenorth/pool/PoolFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/adrianwong/hackthenorth/pool/PoolFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/adrianwong/hackthenorth/pool/PoolPresenter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/adrianwong/hackthenorth/pool/PoolPresenter.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/adrianwong/hackthenorth/repository/DashboardRepositoryImpl.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/adrianwong/hackthenorth/repository/IndividualRepositoryImpl.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/adrianwong/hackthenorth/repository/PoolRepositoryImpl.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/adrianwong/hackthenorth/repository/RepositoryImpl.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/res/layout/fragment_dashboard.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/layout/fragment_dashboard.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
