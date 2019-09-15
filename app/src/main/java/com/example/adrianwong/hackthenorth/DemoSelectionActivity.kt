@@ -11,12 +11,12 @@ class DemoSelectionActivity : AppCompatActivity() {
         setContentView(R.layout.activity_demo_selection)
 
         button1.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
+            val intent = Intent(this, SignInActivity::class.java)
             startActivity(intent)
         }
 
         button2.setOnClickListener {
-            val intent = Intent(this, SignInActivity::class.java)
+            val intent = Intent(this, MerchantActivity::class.java)
             startActivity(intent)
         }
 
