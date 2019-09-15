@@ -67,6 +67,7 @@ class DashboardFragment : Fragment(), DashboardContract.View {
     
     override fun onDestroyView() {
         (activity?.application as MainApplication).releaseDashboardSubcomponent()
+        presenter.detachView()
         super.onDestroyView()
     }
 }

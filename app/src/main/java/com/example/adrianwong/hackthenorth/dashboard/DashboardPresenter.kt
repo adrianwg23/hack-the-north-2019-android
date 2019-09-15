@@ -44,4 +44,8 @@ class DashboardPresenter(private val repo: RepositoryImpl) : DashboardContract.P
         return list
     }
 
+    fun detachView() {
+        disposables.dispose()
+    }
+
 }

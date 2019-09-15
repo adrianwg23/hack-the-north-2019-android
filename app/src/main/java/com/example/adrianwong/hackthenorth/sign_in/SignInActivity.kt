@@ -28,6 +28,12 @@ class SignInActivity : AppCompatActivity() {
             AuthUI.IdpConfig.GoogleBuilder().build()
         )
         sign_in_button.setOnClickListener { showSignInOptions() }
+        sign_out_tv.setOnClickListener {
+            AuthUI.getInstance()
+                .signOut(this)
+                .addOnCompleteListener {  }
+                .addOnFailureListener {  }
+        }
 
         showSignInOptions()
     }
@@ -45,8 +51,6 @@ class SignInActivity : AppCompatActivity() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == RC_SIGN_IN) {
-            val response = IdpResponse.fromResultIntent(data)
-
             if (resultCode == Activity.RESULT_OK) {
                 // Successfully signed in
                 (application as MainApplication).UUID = FirebaseAuth.getInstance().currentUser!!.uid
