@@ -5,6 +5,7 @@ import android.app.AlertDialog
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -92,7 +93,9 @@ class PoolFragment : Fragment(), PoolContract.View {
                 Snackbar.make(container, "Please enter a real amount of money to donate",
                         Snackbar.LENGTH_SHORT)
             } else {
-                presenter.submitDonation()
+                val UUID = (activity!!.application as MainApplication).UUID
+                Log.d("PoolFragTag", "uuid: $UUID")
+                presenter.submitDonation(UUID, moneyAmount)
             }
         }
     }

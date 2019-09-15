@@ -15,6 +15,7 @@ class MainApplication : Application() {
     private var poolSubcomponent: PoolSubcomponent? = null
     private var dashboardSubcomponent: DashboardSubcomponent? = null
     private var individualSubcomponent: IndividualSubcomponent? = null
+    var UUID: String = ""
 
     override fun onCreate() {
         super.onCreate()
