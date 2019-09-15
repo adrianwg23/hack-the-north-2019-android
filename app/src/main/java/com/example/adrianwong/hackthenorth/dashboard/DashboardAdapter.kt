@@ -9,22 +9,28 @@ import com.example.adrianwong.hackthenorth.R
 import kotlinx.android.synthetic.main.dashboard_row.view.*
 import kotlinx.android.synthetic.main.fragment_dashboard.view.*
 
-class DashboardAdapter (val items : ArrayList<String>, val context: Context?) : RecyclerView.Adapter<ViewHolder>() {
-
-    override fun getItemCount(): Int {
-        return items.size
-    }
+class DashboardAdapter(val items: ArrayList<String>, val context: Context?) :
+    RecyclerView.Adapter<DashboardAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return ViewHolder(LayoutInflater.from(context).inflate(R.layout.dashboard_row, parent, false))
-
+        return ViewHolder(
+            LayoutInflater.from(context).inflate(
+                R.layout.dashboard_row,
+                parent,
+                false
+            )
+        )
     }
+
+    override fun getItemCount(): Int = items.size
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        //holder.bind(items[position])
+        //holder?.tvAnimalType?.text = items.get(position)
     }
 
-}
 
-class ViewHolder (view: View) : RecyclerView.ViewHolder(view) {
-    // Holds the TextView that will add each animal to
+    inner class ViewHolder(view: View) :
+        RecyclerView.ViewHolder(view) {
+    }
 }

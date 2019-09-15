@@ -10,12 +10,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e4c123a0-3bef-4fae-86de-b4bf28d223fc" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/adrianwong/hackthenorth/individual/IndividualPayBottomSheet.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/res/layout/fragment_bottom_sheet.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/adrianwong/hackthenorth/BarCodeScannerActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/adrianwong/hackthenorth/BarCodeScannerActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/adrianwong/hackthenorth/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/adrianwong/hackthenorth/MainActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/adrianwong/hackthenorth/individual/IndividualFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/adrianwong/hackthenorth/individual/IndividualFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/adrianwong/hackthenorth/dashboard/DashboardAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/adrianwong/hackthenorth/dashboard/DashboardAdapter.kt" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
