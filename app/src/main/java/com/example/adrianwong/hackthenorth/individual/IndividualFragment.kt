@@ -53,11 +53,11 @@ class IndividualFragment : Fragment(), IndividualContract.View {
 
         if (requestCode == REQUEST_CODE) {
             if (resultCode == Activity.RESULT_OK) {
-                val recieverUUID = data?.getStringExtra("result")
-                recieverUUID?.let {
+                val receiverUUID = data?.getStringExtra("result")
+                receiverUUID?.let {
                     if (it != "") {
                         Log.d("IndividualFragTag", it)
-
+                        receiverUUID.trim()
                         individualPayBottomSheet.onSubmitMoney = {
                             if (it == 0) {
                                 Snackbar.make(
@@ -66,8 +66,8 @@ class IndividualFragment : Fragment(), IndividualContract.View {
                                 )
                             } else {
                                 val donatorUUID = (activity!!.application as MainApplication).UUID
-                                Log.d("IndividualFragTag", "uuid: $donatorUUID, receiverId: $recieverUUID, amount: $it")
-                                presenter.onSubmitIndividualDonation(donatorUUID, recieverUUID, it)
+                                Log.d("IndividualFragTag", "uuid: $donatorUUID, receiverId: $receiverUUID, amount: $it")
+                                presenter.onSubmitIndividualDonation(donatorUUID, receiverUUID, it)
                                 individualPayBottomSheet.dismiss()
                             }
                         }

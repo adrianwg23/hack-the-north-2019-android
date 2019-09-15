@@ -10,3 +10,11 @@ data class ResultWrapper(
     @SerializedName("result")
     var result: String
 )
+
+data class ReceiverWrapper(
+    @SerializedName("name")
+    var name: String,
+
+    @SerializedName("balance")
+    var balance: String
+)

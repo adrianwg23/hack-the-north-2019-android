@@ -5,12 +5,23 @@ import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
 import android.os.PersistableBundle
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.adrianwong.hackthenorth.individual.IndividualFragment
+import com.example.adrianwong.hackthenorth.repository.RepositoryImpl
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_atm.*
+import javax.inject.Inject
 
 class AtmActivity : AppCompatActivity() {
+
+    @Inject lateinit var repositoryImpl: RepositoryImpl
+
+    private val disposables: CompositeDisposable = CompositeDisposable()
+
     companion object{
         const val BARCODE_CHECK_ATM_REQUEST : Int = 10
     }
@@ -19,17 +30,15 @@ class AtmActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         setContentView(R.layout.activity_atm)
 
+        (application as MainApplication).mainComponent.inject(this)
+
+        alert()
+
         scanning_to_check_balance.setOnClickListener {
             val intent = Intent(this, BarCodeScannerActivity::class.java)
             startActivityForResult(intent, BARCODE_CHECK_ATM_REQUEST)
-            //Todo: get uuid, make network call to get current money for that user and display.
-            //make network request with uuid from activity on result
-            alert()
         }
 
-        tap_to_check_balance.setOnClickListener {
-            //no operation yet
-        }
 
         super.onCreate(savedInstanceState)
     }
@@ -42,7 +51,15 @@ class AtmActivity : AppCompatActivity() {
                 val result = data?.getStringExtra("result")
                 result?.let {
                     if (it != "") {
-                        //make network request... with uuid... return money amount...
+                        progress_bar.visibility = View.VISIBLE
+                        disposables.add(repositoryImpl.getReceiverInfo(it.trim())
+                            .subscribeOn(Schedulers.io())
+                            .observeOn(AndroidSchedulers.mainThread())
+                            .subscribe { receiverWrapper ->
+                                receiver_balance.text = "$" + receiverWrapper.balance
+                                receiver_name.text = receiverWrapper.name
+                                progress_bar.visibility = View.GONE
+                            })
                     }
                 }
             } else {

@@ -1,5 +1,7 @@
 package com.example.adrianwong.hackthenorth.dagger
 
+import com.example.adrianwong.hackthenorth.AtmActivity
+import com.example.adrianwong.hackthenorth.MerchantActivity
 import com.example.adrianwong.hackthenorth.dagger.application.ApplicationModule
 import com.example.adrianwong.hackthenorth.dagger.application.ApplicationScope
 import com.example.adrianwong.hackthenorth.dagger.application.DataModule
@@ -17,5 +19,9 @@ interface MainComponent {
     fun plusIndividualSubcomponent(individualModule: IndividualModule): IndividualSubcomponent
 
     fun plusDashboardSubcomponent(dashboardModule: DashboardModule): DashboardSubcomponent
+
+    fun inject(atmActivity: AtmActivity)
+
+    fun inject(merchantActivity: MerchantActivity)
 
 }

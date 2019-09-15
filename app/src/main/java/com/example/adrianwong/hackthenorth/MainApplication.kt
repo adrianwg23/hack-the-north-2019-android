@@ -2,7 +2,6 @@ package com.example.adrianwong.hackthenorth
 
 import android.app.Application
 import android.util.Log
-import android.widget.Toast
 import com.example.adrianwong.hackthenorth.dagger.DaggerMainComponent
 import com.example.adrianwong.hackthenorth.dagger.MainComponent
 import com.example.adrianwong.hackthenorth.dagger.pool.*
@@ -12,7 +11,7 @@ import com.google.firebase.messaging.FirebaseMessaging
 
 class MainApplication : Application() {
 
-    private lateinit var mainComponent: MainComponent
+    lateinit var mainComponent: MainComponent
     private var poolSubcomponent: PoolSubcomponent? = null
     private var dashboardSubcomponent: DashboardSubcomponent? = null
     private var individualSubcomponent: IndividualSubcomponent? = null
@@ -45,7 +44,6 @@ class MainApplication : Application() {
                     msg = "failed"
                 }
                 Log.d("MainApplicationTag", msg)
-                Toast.makeText(baseContext, msg, Toast.LENGTH_SHORT).show()
             }
     }
 
