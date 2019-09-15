@@ -29,7 +29,7 @@ class IndividualPayBottomSheet : BottomSheetDialogFragment() {
         subitMoneyTv = view.findViewById(R.id.submit_money)
         closeModal = view.findViewById(R.id.close_modal)
         subitMoneyTv.setOnClickListener { onSubmitMoney?.invoke(enterMoneyEt.text.toString().toInt()) }
-        close_modal.setOnClickListener{
+        closeModal.setOnClickListener{
             dismiss()
         }
         return view
