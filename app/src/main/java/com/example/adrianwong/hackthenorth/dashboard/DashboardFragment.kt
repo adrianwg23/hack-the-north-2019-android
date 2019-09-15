@@ -70,4 +70,6 @@ class DashboardFragment : Fragment(), DashboardContract.View {
         presenter.detachView()
         super.onDestroyView()
     }
+    
+    
 }

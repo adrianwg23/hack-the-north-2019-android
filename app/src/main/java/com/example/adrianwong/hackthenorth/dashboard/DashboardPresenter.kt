@@ -35,12 +35,12 @@ class DashboardPresenter(private val repo: RepositoryImpl) : DashboardContract.P
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({ result ->
                     Log.d("henlo", "success")
-                    list = result.arrayList
+                    list = result.allPoolArrayList
                 }, {
                     Log.d("henlo", it.localizedMessage)
                 })
         )
-        
+
         return list
     }
 
