@@ -26,4 +26,8 @@ class PoolPresenter(private val repo: RepositoryImpl) : PoolContract.Presenter {
                 Log.d("henlo", it.localizedMessage)
             }))
     }
+
+    override fun detachView() {
+        disposables.dispose()
+    }
 }

@@ -43,6 +43,7 @@ class PoolFragment : Fragment(), PoolContract.View {
 
     override fun onDestroyView() {
         (activity?.application as MainApplication).releasePoolSubcomponent()
+        presenter.detachView()
         super.onDestroyView()
     }
 

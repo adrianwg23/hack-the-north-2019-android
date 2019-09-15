@@ -1,23 +1,32 @@
 package com.example.adrianwong.hackthenorth.service
 
+import android.content.Intent
 import android.util.Log
 import com.google.firebase.messaging.FirebaseMessagingService
+import com.google.firebase.messaging.RemoteMessage
 
 const val TAG = "MyFCMServiceTag"
 
 class MyFirebaseMessagingService : FirebaseMessagingService() {
 
-    override fun onNewToken(token: String) {
-        Log.d(TAG, "Refreshed token: $token")
+    override fun onMessageReceived(remoteMessage: RemoteMessage) {
+        super.onMessageReceived(remoteMessage)
 
-        // If you want to send messages to this application instance or
-        // manage this apps subscriptions on the server side, send the
-        // Instance ID token to your app server.
-        sendRegistrationToServer(token)
+        Log.d(TAG, "From: ${remoteMessage.from}")
+
+        // Check if message contains a data payload.
+        remoteMessage.data.isNotEmpty().let {
+            Log.d(TAG, "data: ${remoteMessage.data}")
+            val intent = Intent(LIVE_POOL_TRIGGER)
+            val newValue = remoteMessage.data.getValue("newValue")
+            intent.putExtra(EXTRA_FCM_MESSAGE, newValue)
+            sendBroadcast(intent)
+        }
     }
 
-    private fun sendRegistrationToServer(token: String?) {
-        // TODO: Implement this method to send token to your app server.
+    companion object {
+        const val LIVE_POOL_TRIGGER = "LIVE_POOL_TRIGGER"
+        const val EXTRA_FCM_MESSAGE = "EXTRA_FCM_MESSAGE"
     }
 
 }
