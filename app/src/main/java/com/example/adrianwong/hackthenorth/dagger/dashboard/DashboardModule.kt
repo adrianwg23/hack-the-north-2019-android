@@ -1,14 +1,14 @@
 package com.example.adrianwong.hackthenorth.dagger.pool
 
-import com.example.adrianwong.hackthenorth.pool.PoolPresenter
+import com.example.adrianwong.hackthenorth.dashboard.DashboardPresenter
 import com.example.adrianwong.hackthenorth.repository.RepositoryImpl
 import dagger.Module
 import dagger.Provides
 
 @Module
-class PoolModule {
+class DashboardModule {
 
     @Provides
     @DashboardScope
-    fun providesPoolPresenter(repositoryImpl: RepositoryImpl) = PoolPresenter(repositoryImpl)
+    fun providesDashboardPresenter(repositoryImpl: RepositoryImpl) = DashboardPresenter(repositoryImpl)
 }

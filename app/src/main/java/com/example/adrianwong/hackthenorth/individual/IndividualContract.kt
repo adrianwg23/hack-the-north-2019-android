@@ -7,6 +7,6 @@ interface IndividualContract {
     }
 
     interface Presenter {
-
+        fun attachView(view: View)
     }
 }

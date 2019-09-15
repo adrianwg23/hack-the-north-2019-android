@@ -8,9 +8,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.adrianwong.hackthenorth.R
 import kotlinx.android.synthetic.main.fragment_individual.*
-import android.app.Activity
-import android.R.attr.data
 import com.example.adrianwong.hackthenorth.BarCodeScannerActivity
+import com.example.adrianwong.hackthenorth.MainApplication
 
 
 class IndividualFragment : Fragment() {
@@ -19,6 +18,7 @@ class IndividualFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        (activity?.application as MainApplication).createIndividualSubcomponent().inject(this)
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_individual, container, false)
     }
@@ -32,6 +32,7 @@ class IndividualFragment : Fragment() {
     }
 
     override fun onDestroyView() {
+        (activity?.application as MainApplication).releaseIndividualSubcomponent()
         super.onDestroyView()
     }
 }

@@ -5,8 +5,7 @@ import android.util.Log
 import android.widget.Toast
 import com.example.adrianwong.hackthenorth.dagger.DaggerMainComponent
 import com.example.adrianwong.hackthenorth.dagger.MainComponent
-import com.example.adrianwong.hackthenorth.dagger.pool.PoolModule
-import com.example.adrianwong.hackthenorth.dagger.pool.PoolSubcomponent
+import com.example.adrianwong.hackthenorth.dagger.pool.*
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.iid.FirebaseInstanceId
 
@@ -14,6 +13,8 @@ class MainApplication : Application() {
 
     private lateinit var mainComponent: MainComponent
     private var poolSubcomponent: PoolSubcomponent? = null
+    private var dashboardSubcomponent: DashboardSubcomponent? = null
+    private var individualSubcomponent: IndividualSubcomponent? = null
 
     override fun onCreate() {
         super.onCreate()
@@ -42,8 +43,25 @@ class MainApplication : Application() {
         return poolSubcomponent!!
     }
 
-    fun releasePoolSubcompnent() {
+    fun createIndividualSubcomponent(): IndividualSubcomponent {
+        individualSubcomponent = mainComponent.plusIndividualSubcomponent(IndividualModule())
+        return individualSubcomponent!!
+    }
+
+    fun createDashboardSubcomponent(): DashboardSubcomponent {
+        dashboardSubcomponent = mainComponent.plusDashboardSubcomponent(DashboardModule())
+        return dashboardSubcomponent!!
+    }
+
+    fun releasePoolSubcomponent() {
         poolSubcomponent = null
     }
 
+    fun releaseIndividualSubcomponent() {
+        individualSubcomponent = null
+    }
+
+    fun releaseDashboardSubcomponent() {
+        dashboardSubcomponent = null
+    }
 }

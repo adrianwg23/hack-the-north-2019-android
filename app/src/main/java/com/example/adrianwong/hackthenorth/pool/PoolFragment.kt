@@ -15,7 +15,6 @@ import com.example.adrianwong.hackthenorth.R
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_pool.*
-import java.util.*
 import javax.inject.Inject
 
 
@@ -45,7 +44,7 @@ class PoolFragment : Fragment(), PoolContract.View {
 
 
     override fun onDestroyView() {
-        (activity?.application as MainApplication).releasePoolSubcompnent()
+        (activity?.application as MainApplication).releasePoolSubcomponent()
         super.onDestroyView()
     }
 
