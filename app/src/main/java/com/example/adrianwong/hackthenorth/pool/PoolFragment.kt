@@ -8,6 +8,7 @@ import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.adrianwong.hackthenorth.MainApplication
 import com.example.adrianwong.hackthenorth.R
@@ -37,8 +38,8 @@ class PoolFragment : Fragment(), PoolContract.View {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        presenter.attachView(this)
         setupViews()
-        setupPresenter()
         super.onViewCreated(view, savedInstanceState)
     }
 
@@ -97,8 +98,8 @@ class PoolFragment : Fragment(), PoolContract.View {
         }
     }
 
-    private fun setupPresenter() {
-        presenter.attachView(this)
+    override fun makeToast(value: String) {
+        Toast.makeText(this.context, value, Toast.LENGTH_LONG).show()
     }
 
     fun showCreateCategoryDialog() {
