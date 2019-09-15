@@ -2,8 +2,10 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/../AndroidStudioProjects-hack-the-north-2019-android.iml" filepath="$PROJECT_DIR$/../AndroidStudioProjects-hack-the-north-2019-android.iml" />
       <module fileurl="file://$PROJECT_DIR$/app.iml" filepath="$PROJECT_DIR$/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/../hack-the-north-2019-android.iml" filepath="$PROJECT_DIR$/../hack-the-north-2019-android.iml" />
+      <module fileurl="file://$PROJECT_DIR$/hack-the-north-2019-android-app.iml" filepath="$PROJECT_DIR$/hack-the-north-2019-android-app.iml" />
     </modules>
   </component>
 </project>
