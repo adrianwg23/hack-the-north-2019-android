@@ -1,24 +1,20 @@
 package com.example.adrianwong.hackthenorth
 
 import android.app.Activity
-import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
-import android.util.AttributeSet
-import android.view.View
 import android.widget.Toast
-import com.example.adrianwong.hackthenorth.pool.PoolFragment
-import com.example.adrianwong.hackthenorth.pool.PoolFragment.Companion.EXTRA_UUID
+import com.example.adrianwong.hackthenorth.individual.IndividualFragment
 import com.google.firebase.ml.vision.FirebaseVision
 import com.google.firebase.ml.vision.barcode.FirebaseVisionBarcode
 import com.google.firebase.ml.vision.barcode.FirebaseVisionBarcodeDetectorOptions
 import com.google.firebase.ml.vision.common.FirebaseVisionImage
-import kotlinx.android.synthetic.main.activity_barcode_scanning.*
-import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.fragment_individual.*
+import com.example.adrianwong.hackthenorth.individual.IndividualFragment.Companion.EXTRA_LAYOUT_COUNTER
+import com.example.adrianwong.hackthenorth.individual.IndividualFragment.Companion.EXTRA_UUID
+
 
 class BarCodeScannerActivity : AppCompatActivity() {
 
@@ -60,9 +56,10 @@ class BarCodeScannerActivity : AppCompatActivity() {
                 if (it.size == 1) {
                     val bundle = Bundle()
                     bundle.putString(EXTRA_UUID, it[0].rawValue)
-                    val paymentFragment = PoolFragment()
-                    supportFragmentManager.beginTransaction()
-                        .add(R.id.barcode_container, paymentFragment, "").commit()
+                    bundle.putBoolean(EXTRA_LAYOUT_COUNTER, true)
+                    val individualFragment = IndividualFragment()
+                    individualFragment.arguments = bundle
+                    supportFragmentManager.beginTransaction().replace(R.id.barcode_container, individualFragment, "").commit()
                 }
             }
             .addOnFailureListener {
@@ -70,6 +67,7 @@ class BarCodeScannerActivity : AppCompatActivity() {
                     this, "There was an error trying to read the QrCode.",
                     Toast.LENGTH_SHORT
                 ).show()
+                finish()
             }
     }
 }
