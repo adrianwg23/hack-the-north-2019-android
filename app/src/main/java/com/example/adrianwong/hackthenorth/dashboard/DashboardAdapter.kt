@@ -21,12 +21,10 @@ class DashboardAdapter (val items : ArrayList<String>, val context: Context?) : 
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.moneyAmount?.text = items[position]
     }
 
 }
 
 class ViewHolder (view: View) : RecyclerView.ViewHolder(view) {
     // Holds the TextView that will add each animal to
-    val moneyAmount = view.amount_of_money
 }

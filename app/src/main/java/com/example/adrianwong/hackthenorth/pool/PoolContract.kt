@@ -15,5 +15,7 @@ interface PoolContract {
         fun attachView(view: View)
 
         fun submitDonation(donorId: String, amount: Int)
+
+        fun detachView()
     }
 }

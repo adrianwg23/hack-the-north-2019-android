@@ -8,6 +8,7 @@ import com.example.adrianwong.hackthenorth.dagger.MainComponent
 import com.example.adrianwong.hackthenorth.dagger.pool.*
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.iid.FirebaseInstanceId
+import com.google.firebase.messaging.FirebaseMessaging
 
 class MainApplication : Application() {
 
@@ -35,8 +36,17 @@ class MainApplication : Application() {
 
                 // Log and toast
                 Log.d("MainApplicationTag", token)
-                Toast.makeText(baseContext, "INSTANCE ID: $token", Toast.LENGTH_SHORT).show()
             })
+
+        FirebaseMessaging.getInstance().subscribeToTopic("livePool")
+            .addOnCompleteListener { task ->
+                var msg = "subscribed"
+                if (!task.isSuccessful) {
+                    msg = "failed"
+                }
+                Log.d("MainApplicationTag", msg)
+                Toast.makeText(baseContext, msg, Toast.LENGTH_SHORT).show()
+            }
     }
 
     fun createPoolSubcomponent(): PoolSubcomponent {
