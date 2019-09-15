@@ -9,8 +9,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.widget.TextView
 import com.example.adrianwong.hackthenorth.dashboard.DashboardFragment
 import com.example.adrianwong.hackthenorth.individual.IndividualFragment
-import com.example.adrianwong.hackthenorth.individual.IndividualFragment.Companion.EXTRA_LAYOUT_COUNTER
-import com.example.adrianwong.hackthenorth.individual.IndividualFragment.Companion.EXTRA_UUID
 import com.example.adrianwong.hackthenorth.pool.PoolFragment
 
 class MainActivity : AppCompatActivity() {
@@ -24,9 +22,6 @@ class MainActivity : AppCompatActivity() {
             }
             R.id.navigation_individual -> {
                 val individualFragment = IndividualFragment()
-                val bundle = Bundle()
-                bundle.putString(EXTRA_UUID, "")
-                bundle.putBoolean(EXTRA_LAYOUT_COUNTER, false)
                 supportFragmentManager.beginTransaction().replace(R.id.container, individualFragment, "").commit()
                 return@OnNavigationItemSelectedListener true
             }

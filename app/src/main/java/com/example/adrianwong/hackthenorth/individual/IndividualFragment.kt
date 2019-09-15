@@ -24,8 +24,6 @@ import javax.inject.Inject
 
 class IndividualFragment : Fragment() {
     companion object {
-        const val EXTRA_UUID: String = "uuid"
-        const val EXTRA_LAYOUT_COUNTER: String = "layout"
         const val REQUEST_CODE = 9999
     }
 
@@ -35,6 +33,7 @@ class IndividualFragment : Fragment() {
     private var moneyAmount: Int = 0
     private var recieverId = ""
 
+    var individualPayBottomSheet = IndividualPayBottomSheet()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -42,24 +41,28 @@ class IndividualFragment : Fragment() {
     ): View? {
         (activity?.application as MainApplication).createIndividualSubcomponent().inject(this)
         // Inflate the layout for this fragment
-        if (arguments?.getBoolean(EXTRA_LAYOUT_COUNTER) == true) {
-            currentState = 1
-            return inflater.inflate(R.layout.fragment_pool, container, false)
-        }
         return inflater.inflate(R.layout.fragment_individual, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        if (currentState == 0) {
-            openScanner.setOnClickListener {
-                val intent = Intent(activity, BarCodeScannerActivity::class.java)
-                startActivityForResult(intent, REQUEST_CODE)
-            }
-        } else {
-            recieverId = arguments?.getString(EXTRA_UUID) ?: ""
-            counterLogic()
+        openScanner.setOnClickListener {
+            val intent = Intent(activity, BarCodeScannerActivity::class.java)
+            startActivityForResult(intent, REQUEST_CODE)
         }
 
+        individualPayBottomSheet.onSubmitMoney = {
+            if (moneyValue.text == null && moneyValue.text.toString().equals("")) {
+                Snackbar.make(
+                    container, "Please enter a real amount of money to donate",
+                    Snackbar.LENGTH_SHORT
+                )
+            } else {
+                val UUID = (activity!!.application as MainApplication).UUID
+                Log.d("PoolFragTag", "uuid: $UUID")
+                presenter.onSubmitIndividualDonation(UUID, recieverId, moneyAmount)
+            }
+        }
+        
         super.onViewCreated(view, savedInstanceState)
     }
 
@@ -72,6 +75,9 @@ class IndividualFragment : Fragment() {
                 result?.let {
                     if (it != "") {
                         Toast.makeText(activity, it, Toast.LENGTH_LONG).show()
+                        individualPayBottomSheet.isCancelable = false
+                        individualPayBottomSheet.show(fragmentManager!!, "")
+
                     }
                 }
             } else {
@@ -83,50 +89,6 @@ class IndividualFragment : Fragment() {
     override fun onDestroyView() {
         (activity?.application as MainApplication).releaseIndividualSubcomponent()
         super.onDestroyView()
-    }
-
-
-    private fun counterLogic() {
-        moneyValue.setText(moneyAmount.toString())
-
-        plusMoneyValue.setOnClickListener {
-            moneyAmount++
-            moneyValue?.setText(moneyAmount.toString())
-        }
-
-        minusMoneyValue.setOnClickListener {
-            if (moneyAmount > 0) {
-                moneyAmount--
-                moneyValue.setText(moneyAmount.toString())
-            }
-        }
-
-        moneyValue.addTextChangedListener(object : TextWatcher {
-            override fun afterTextChanged(s: Editable?) {
-            }
-
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-            }
-
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                if (moneyValue.text.toString() == "") moneyAmount = 0
-                else moneyAmount = moneyValue.text.toString().toInt()
-            }
-        })
-
-        submitDonation.setOnClickListener {
-            if (moneyValue.text == null && moneyValue.text.toString().equals("")) {
-                Snackbar.make(
-                    container, "Please enter a real amount of money to donate",
-                    Snackbar.LENGTH_SHORT
-                )
-            } else {
-                val UUID = (activity!!.application as MainApplication).UUID
-                Log.d("PoolFragTag", "uuid: $UUID")
-                presenter.onSubmitIndividualDonation(UUID, recieverId, moneyAmount)
-            }
-        }
-
     }
 
 }

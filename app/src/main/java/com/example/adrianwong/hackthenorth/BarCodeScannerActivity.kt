@@ -12,8 +12,6 @@ import com.google.firebase.ml.vision.FirebaseVision
 import com.google.firebase.ml.vision.barcode.FirebaseVisionBarcode
 import com.google.firebase.ml.vision.barcode.FirebaseVisionBarcodeDetectorOptions
 import com.google.firebase.ml.vision.common.FirebaseVisionImage
-import com.example.adrianwong.hackthenorth.individual.IndividualFragment.Companion.EXTRA_LAYOUT_COUNTER
-import com.example.adrianwong.hackthenorth.individual.IndividualFragment.Companion.EXTRA_UUID
 
 
 class BarCodeScannerActivity : AppCompatActivity() {
@@ -58,6 +56,10 @@ class BarCodeScannerActivity : AppCompatActivity() {
                     intent.putExtra("result", it[0].rawValue)
                     setResult(Activity.RESULT_OK, intent)
                     finish()
+                } else {
+                    val intent = Intent()
+                    setResult(Activity.RESULT_CANCELED, intent)
+                    finish()
                 }
             }
             .addOnFailureListener {
@@ -65,6 +67,8 @@ class BarCodeScannerActivity : AppCompatActivity() {
                     this, "There was an error trying to read the QrCode.",
                     Toast.LENGTH_SHORT
                 ).show()
+                val intent = Intent()
+                setResult(Activity.RESULT_CANCELED, intent)
                 finish()
             }
     }

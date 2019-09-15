@@ -9,7 +9,14 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e4c123a0-3bef-4fae-86de-b4bf28d223fc" name="Default Changelist" comment="" />
+    <list default="true" id="e4c123a0-3bef-4fae-86de-b4bf28d223fc" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/adrianwong/hackthenorth/individual/IndividualPayBottomSheet.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/res/layout/fragment_bottom_sheet.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/adrianwong/hackthenorth/BarCodeScannerActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/adrianwong/hackthenorth/BarCodeScannerActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/adrianwong/hackthenorth/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/adrianwong/hackthenorth/MainActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/adrianwong/hackthenorth/individual/IndividualFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/adrianwong/hackthenorth/individual/IndividualFragment.kt" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -305,6 +312,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="7" />
+    <editor active="true" />
     <layout>
       <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
       <window_info id="Capture Tool" order="1" />
