@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="32dp"
+        android:orientation="vertical">
+
+    <TextView
+            android:id="@+id/atm_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:gravity="center"
+            android:text="Check your balance."
+            android:textSize="24dp" />
+
+    <TextView
+            android:id="@+id/atm_desc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/atm_title"
+            android:gravity="center"
+            android:text="Scan your qr code or tap your card."
+            android:textSize="18dp" />
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="64dp"
+            android:orientation="vertical">
+
+        <Button
+                android:id="@+id/scanning_to_check_balance"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/atm_desc"
+                android:text="Scan to check balance" />
+
+        <Button
+                android:id="@+id/tap_to_check_balance"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/scanning_to_check_balance"
+                android:text="Tap to check balance" />
+    </LinearLayout>
+
+</RelativeLayout>

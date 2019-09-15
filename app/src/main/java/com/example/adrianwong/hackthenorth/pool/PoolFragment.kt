@@ -15,13 +15,18 @@ import com.example.adrianwong.hackthenorth.R
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_pool.*
+import java.util.*
 import javax.inject.Inject
 
 
 class PoolFragment : Fragment(), PoolContract.View {
 
+    companion object {
+        const val EXTRA_UUID : String = "uuid"
+    }
     @Inject lateinit var presenter: PoolPresenter
     private var moneyAmount: Int = 0
+
 
     override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?,
@@ -53,6 +58,9 @@ class PoolFragment : Fragment(), PoolContract.View {
     }
 
     private fun setupViews() {
+        arguments.let {
+            uuid.text = it?.getString(EXTRA_UUID)
+        }
         moneyValue.setText(moneyAmount.toString())
 
         plusMoneyValue.setOnClickListener {

@@ -1,6 +1,8 @@
 package com.example.adrianwong.hackthenorth
 
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuInflater
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import android.widget.TextView
@@ -39,4 +41,5 @@ class MainActivity : AppCompatActivity() {
         val navView: BottomNavigationView = findViewById(R.id.nav_view)
         navView.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener)
     }
+
 }
