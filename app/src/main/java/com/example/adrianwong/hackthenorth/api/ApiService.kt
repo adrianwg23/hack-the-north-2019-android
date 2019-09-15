@@ -23,4 +23,8 @@ interface ApiService {
 
     @GET("getReceiverInfo")
     fun getReceiverInfo(@Query("receiverId") receiverId: String): Single<ReceiverWrapper>
+
+    @GET("merchantMinus")
+    fun merchantMinus(@Query("receiverId") receiverId: String,
+                             @Query("amount") amount: String): Single<ResultWrapper>
 }

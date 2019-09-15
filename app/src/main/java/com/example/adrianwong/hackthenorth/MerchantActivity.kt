@@ -5,15 +5,26 @@ import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
 import android.os.PersistableBundle
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.adrianwong.hackthenorth.repository.RepositoryImpl
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.schedulers.Schedulers
+import kotlinx.android.synthetic.main.activity_atm.*
 import kotlinx.android.synthetic.main.activity_merchant.*
+import javax.inject.Inject
 
 class MerchantActivity : AppCompatActivity() {
 
     companion object{
         const val MERCHANT_BARCODE_RESULT : Int = 8
     }
+
+    @Inject lateinit var repositoryImpl: RepositoryImpl
+
+    private val disposables: CompositeDisposable = CompositeDisposable()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         setContentView(R.layout.activity_merchant)
@@ -34,7 +45,15 @@ class MerchantActivity : AppCompatActivity() {
                 val result = data?.getStringExtra("result")
                 result?.let {
                     if (it != "") {
-                        //make network request... with uuid and money update
+                        editbox.text
+                        progress_bar_merchant.visibility = View.VISIBLE
+                        disposables.add(repositoryImpl.merchantMinus(it.trim(), editbox.text.toString().toInt())
+                            .subscribeOn(Schedulers.io())
+                            .observeOn(AndroidSchedulers.mainThread())
+                            .subscribe { result ->
+                                Toast.makeText(this, "Successful transaction.", Toast.LENGTH_LONG).show()
+                                progress_bar_merchant.visibility = View.GONE
+                            })
                     }
                 }
             } else {

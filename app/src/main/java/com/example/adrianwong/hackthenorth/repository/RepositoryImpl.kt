@@ -18,12 +18,20 @@ class RepositoryImpl(private val apiService: ApiService) {
     fun donateToPool(donorId: String, amount: Int): Single<ResultWrapper> {
         return apiService.donateToPool(donorId, amount)
     }
-    
-    fun donateToIndividual(donorId: String, recieverId: String, amount: Int): Single<ResultWrapper> {
+
+    fun donateToIndividual(
+        donorId: String,
+        recieverId: String,
+        amount: Int
+    ): Single<ResultWrapper> {
         return apiService.donateToIndividual(donorId, recieverId, amount)
     }
 
     fun getReceiverInfo(receiverId: String): Single<ReceiverWrapper> {
         return apiService.getReceiverInfo(receiverId)
+    }
+
+    fun merchantMinus(recieverId: String, amount: Int): Single<ResultWrapper> {
+        return apiService.merchantMinus(recieverId, amount.toString())
     }
 }
