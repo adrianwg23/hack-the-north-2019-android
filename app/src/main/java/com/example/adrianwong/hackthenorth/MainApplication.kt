@@ -1,9 +1,13 @@
 package com.example.adrianwong.hackthenorth
 
 import android.app.Application
+import android.util.Log
+import android.widget.Toast
 import com.example.adrianwong.hackthenorth.dagger.DaggerMainComponent
 import com.example.adrianwong.hackthenorth.dagger.MainComponent
 import com.example.adrianwong.hackthenorth.dagger.pool.*
+import com.google.android.gms.tasks.OnCompleteListener
+import com.google.firebase.iid.FirebaseInstanceId
 
 class MainApplication : Application() {
 
@@ -11,12 +15,28 @@ class MainApplication : Application() {
     private var poolSubcomponent: PoolSubcomponent? = null
     private var dashboardSubcomponent: DashboardSubcomponent? = null
     private var individualSubcomponent: IndividualSubcomponent? = null
+    var UUID: String = ""
 
     override fun onCreate() {
         super.onCreate()
 
         mainComponent = DaggerMainComponent.builder()
             .build()
+
+        FirebaseInstanceId.getInstance().instanceId
+            .addOnCompleteListener(OnCompleteListener { task ->
+                if (!task.isSuccessful) {
+                    Log.w("MainApplicationTag", "getInstanceId failed", task.exception)
+                    return@OnCompleteListener
+                }
+
+                // Get new Instance ID token
+                val token = task.result?.token
+
+                // Log and toast
+                Log.d("MainApplicationTag", token)
+                Toast.makeText(baseContext, "INSTANCE ID: $token", Toast.LENGTH_SHORT).show()
+            })
     }
 
     fun createPoolSubcomponent(): PoolSubcomponent {

@@ -15,13 +15,12 @@ class PoolPresenter(private val repo: RepositoryImpl) : PoolContract.Presenter {
         poolView = view
     }
 
-    override fun submitDonation() {
-        disposables.add(repo.getCurrentPoolFunction()
+    override fun submitDonation(donorId: String, amount: Int) {
+        disposables.add(repo.donateToPool(donorId, amount)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe ({ result ->
-                Log.d("henlo", "success")
-                poolView.makeToast(result.totalAmount.toString())
+                poolView.makeToast(result.result)
             }, {
                 poolView.makeToast("fail")
                 Log.d("henlo", it.localizedMessage)
