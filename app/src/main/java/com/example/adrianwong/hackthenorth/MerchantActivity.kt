@@ -45,7 +45,6 @@ class MerchantActivity : AppCompatActivity() {
                 val result = data?.getStringExtra("result")
                 result?.let {
                     if (it != "") {
-                        editbox.text
                         progress_bar_merchant.visibility = View.VISIBLE
                         disposables.add(repositoryImpl.merchantMinus(it.trim(), editbox.text.toString().toInt())
                             .subscribeOn(Schedulers.io())
