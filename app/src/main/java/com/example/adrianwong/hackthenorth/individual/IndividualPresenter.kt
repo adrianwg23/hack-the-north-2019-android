@@ -1,7 +1,6 @@
 package com.example.adrianwong.hackthenorth.individual
 
 import android.util.Log
-import com.example.adrianwong.hackthenorth.dashboard.DashboardContract
 import com.example.adrianwong.hackthenorth.repository.RepositoryImpl
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
@@ -20,10 +19,15 @@ class IndividualPresenter(private val repo: RepositoryImpl) : IndividualContract
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe ({ result ->
-                individualView.makeToast(result.result)
+                Log.d("yeet", "result: ${result.result}")
+                individualView.makeToast("success")
             }, {
                 individualView.makeToast("fail")
                 Log.d("henlo", it.localizedMessage)
             }))
+    }
+
+    fun detachView() {
+        disposables.dispose()
     }
 }
