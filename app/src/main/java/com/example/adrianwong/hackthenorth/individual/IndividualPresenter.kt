@@ -11,4 +11,8 @@ class IndividualPresenter(private val repo: RepositoryImpl) : IndividualContract
     override fun attachView(view: IndividualContract.View) {
         individualPresenter = view
     }
+
+    override fun onSubmitIndividualDonation() {
+        //make api call
+    }
 }
