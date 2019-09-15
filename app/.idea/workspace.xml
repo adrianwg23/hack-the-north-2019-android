@@ -10,10 +10,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e4c123a0-3bef-4fae-86de-b4bf28d223fc" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/adrianwong/hackthenorth/dashboard/DashboardAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/adrianwong/hackthenorth/dashboard/DashboardAdapter.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/adrianwong/hackthenorth/dashboard/DashboardFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/adrianwong/hackthenorth/dashboard/DashboardFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/adrianwong/hackthenorth/dashboard/DashboardPresenter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/adrianwong/hackthenorth/dashboard/DashboardPresenter.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/adrianwong/hackthenorth/datamodels/AllPoolWrapper.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/adrianwong/hackthenorth/datamodels/AllPoolWrapper.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
