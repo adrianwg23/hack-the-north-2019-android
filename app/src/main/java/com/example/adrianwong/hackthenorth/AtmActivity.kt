@@ -71,5 +71,5 @@ class AtmActivity : AppCompatActivity() {
         // Display the alert dialog on app interface
         dialog.show()
     }
-    }
+
 }
