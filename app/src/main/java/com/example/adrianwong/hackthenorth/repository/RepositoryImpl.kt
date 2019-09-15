@@ -20,4 +20,8 @@ class RepositoryImpl(private val apiService: ApiService) {
     fun donateToPool(donorId: String, amount: Int): Single<ResultWrapper> {
         return apiService.donateToPool(donorId, amount)
     }
+    
+    fun donateToIndividual(donorId: String, recieverId: String, amount: Int): Single<ResultWrapper> {
+        return apiService.donateToIndividual(donorId, recieverId, amount)
+    }
 }

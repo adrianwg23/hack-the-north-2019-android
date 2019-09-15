@@ -4,9 +4,11 @@ import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.adrianwong.hackthenorth.R
 import kotlinx.android.synthetic.main.fragment_individual.*
@@ -29,6 +31,7 @@ class IndividualFragment : Fragment() {
     lateinit var presenter: IndividualPresenter
     private var currentState = 0
     private var moneyAmount: Int = 0
+    private var recieverId = ""
 
 
     override fun onCreateView(
@@ -51,6 +54,7 @@ class IndividualFragment : Fragment() {
                 activity?.startActivity(intent)
             }
         } else {
+            recieverId = arguments?.getString(EXTRA_UUID) ?: ""
             counterLogic()
         }
 
@@ -61,6 +65,7 @@ class IndividualFragment : Fragment() {
         (activity?.application as MainApplication).releaseIndividualSubcomponent()
         super.onDestroyView()
     }
+
 
     private fun counterLogic() {
         moneyValue.setText(moneyAmount.toString())
@@ -92,12 +97,16 @@ class IndividualFragment : Fragment() {
 
         submitDonation.setOnClickListener {
             if (moneyValue.text == null && moneyValue.text.toString().equals("")) {
-                Snackbar.make(container, "Please enter a real amount of money to donate",
-                    Snackbar.LENGTH_SHORT)
+                Snackbar.make(
+                    container, "Please enter a real amount of money to donate",
+                    Snackbar.LENGTH_SHORT
+                )
             } else {
-                presenter.onSubmitIndividualDonation()
+                val UUID = (activity!!.application as MainApplication).UUID
+                Log.d("PoolFragTag", "uuid: $UUID")
+                presenter.onSubmitIndividualDonation(UUID, recieverId, moneyAmount)
             }
         }
-    }
 
+    }
 }

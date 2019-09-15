@@ -1,18 +1,29 @@
 package com.example.adrianwong.hackthenorth.individual
 
+import android.util.Log
 import com.example.adrianwong.hackthenorth.dashboard.DashboardContract
 import com.example.adrianwong.hackthenorth.repository.RepositoryImpl
+import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.schedulers.Schedulers
 
 class IndividualPresenter(private val repo: RepositoryImpl) : IndividualContract.Presenter {
-    private lateinit var individualPresenter: IndividualContract.View
+    private lateinit var individualView: IndividualContract.View
     private val disposables = CompositeDisposable()
 
     override fun attachView(view: IndividualContract.View) {
-        individualPresenter = view
+        individualView = view
     }
 
-    override fun onSubmitIndividualDonation() {
-        //make api call
+    override fun onSubmitIndividualDonation(uuid: String, recieverId: String, moneyAmount: Int) {
+        disposables.add(repo.donateToIndividual(uuid, recieverId, moneyAmount)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe ({ result ->
+                individualView.makeToast(result.result)
+            }, {
+                individualView.makeToast("fail")
+                Log.d("henlo", it.localizedMessage)
+            }))
     }
 }

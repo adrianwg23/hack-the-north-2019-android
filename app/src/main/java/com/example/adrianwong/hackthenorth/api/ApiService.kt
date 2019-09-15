@@ -17,4 +17,9 @@ interface ApiService {
 
     @GET("donateToPool")
     fun donateToPool(@Query("donorId") donorId: String, @Query("amount") amount: Int): Single<ResultWrapper>
+
+    @GET("donateToIndividual")
+    fun donateToIndividual(@Query("donorId") donorId: String, 
+                           @Query("receiverId ") receiverId : String, 
+                           @Query("amount") amount: Int): Single<ResultWrapper>
 }
