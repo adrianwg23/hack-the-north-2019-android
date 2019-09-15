@@ -10,8 +10,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e4c123a0-3bef-4fae-86de-b4bf28d223fc" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/adrianwong/hackthenorth/AtmActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/adrianwong/hackthenorth/AtmActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/adrianwong/hackthenorth/MerchantActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/adrianwong/hackthenorth/MerchantActivity.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/res/layout/dashboard_all_pool.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/adrianwong/hackthenorth/dashboard/DashboardAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/adrianwong/hackthenorth/dashboard/DashboardAdapter.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/res/layout/fragment_bottom_sheet.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/layout/fragment_bottom_sheet.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />

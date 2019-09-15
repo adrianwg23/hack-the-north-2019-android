@@ -8,6 +8,7 @@ import android.widget.EditText
 import android.widget.TextView
 import com.example.adrianwong.hackthenorth.R
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import kotlinx.android.synthetic.main.fragment_bottom_sheet.*
 
 class IndividualPayBottomSheet : BottomSheetDialogFragment() {
 
@@ -25,7 +26,9 @@ class IndividualPayBottomSheet : BottomSheetDialogFragment() {
         enterMoneyEt = view.findViewById(R.id.enter_money)
         subitMoneyTv = view.findViewById(R.id.submit_money)
         subitMoneyTv.setOnClickListener { onSubmitMoney?.invoke(enterMoneyEt.text.toString().toInt()) }
-
+        close_modal.setOnClickListener(){
+            dismiss()
+        }
         return view
     }
 }

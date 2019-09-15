@@ -1,39 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
 
-    <TextView
+    <ImageView
+            android:id="@+id/close_modal"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:padding="8dp"
+            android:src="@mipmap/ic_close" />
+
+    <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="16dp"
-            android:text="Enter the amount you would like to donate."
-            android:textSize="18dp"/>
-    <EditText
-            android:id="@+id/enter_money"
-            android:inputType="number"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="64dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginRight="64dp"
-            android:layout_marginBottom="22dp"/>
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="32dp"
+            android:orientation="vertical">
 
-    <TextView
-            android:id="@+id/submit_money"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:background="@color/colorPrimary"
-            android:gravity="center"
-            android:padding="16dp"
-            android:text="Donate to individual"
-            android:textColor="#FFFFFF"
-            android:textSize="16sp"
-            android:textStyle="bold"/>
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="16dp"
+                android:text="Enter the amount you would like to donate."
+                android:textSize="18dp" />
 
-</LinearLayout>
+        <EditText
+                android:id="@+id/enter_money"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="64dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginRight="64dp"
+                android:layout_marginBottom="22dp"
+                android:inputType="number" />
 
+        <TextView
+                android:id="@+id/submit_money"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:background="@color/colorPrimary"
+                android:gravity="center"
+                android:padding="16dp"
+                android:text="Donate to individual"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+    </LinearLayout>
+
+</RelativeLayout>
