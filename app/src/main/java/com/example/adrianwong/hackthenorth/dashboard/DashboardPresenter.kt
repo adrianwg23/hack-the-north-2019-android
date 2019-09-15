@@ -10,7 +10,6 @@ import io.reactivex.schedulers.Schedulers
 class DashboardPresenter(private val repo: RepositoryImpl) : DashboardContract.Presenter {
     private lateinit var dashboardView: DashboardContract.View
     private val disposables = CompositeDisposable()
-
     override fun attachView(view: DashboardContract.View) {
         dashboardView = view
 
@@ -25,11 +24,24 @@ class DashboardPresenter(private val repo: RepositoryImpl) : DashboardContract.P
                     Log.d("henlo", it.localizedMessage)
                 })
         )
-        
+
     }
 
-    override fun getHistoryList(list: ArrayList<CurrentPool>) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    override fun getHistoryList(): ArrayList<CurrentPool> {
+        var list = ArrayList<CurrentPool>()
+        disposables.add(
+            repo.getAllPoolFunction()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe({ result ->
+                    Log.d("henlo", "success")
+                    list = result.arrayList
+                }, {
+                    Log.d("henlo", it.localizedMessage)
+                })
+        )
+        
+        return list
     }
 
 }

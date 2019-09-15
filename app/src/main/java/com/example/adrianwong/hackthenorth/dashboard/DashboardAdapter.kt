@@ -7,6 +7,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.adrianwong.hackthenorth.R
 import com.example.adrianwong.hackthenorth.datamodels.CurrentPool
+import kotlinx.android.synthetic.main.dashboard_row.view.*
+import android.widget.TextView
+import kotlinx.android.extensions.LayoutContainer
+
 
 class DashboardAdapter(val items: ArrayList<CurrentPool>, val context: Context?) :
     RecyclerView.Adapter<DashboardAdapter.ViewHolder>() {
@@ -24,14 +28,13 @@ class DashboardAdapter(val items: ArrayList<CurrentPool>, val context: Context?)
     override fun getItemCount(): Int = items.size
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(items[position])
+        items?.let { v ->
+            holder.title.text = v[position].totalAmount.toString()
+        }
     }
 
 
-    inner class ViewHolder(view: View) :
-        RecyclerView.ViewHolder(view) {
-        fun bind(item: CurrentPool) {
-            
-        }
+    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        val title = itemView.live_count
     }
 }
