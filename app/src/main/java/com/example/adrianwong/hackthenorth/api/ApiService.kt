@@ -11,7 +11,7 @@ interface ApiService {
     fun getCurrentPoolFunction(): Single<CurrentPool>
 
     @GET("getAllPool") //history of above
-    fun getAllPoolFunction(): Single<AllPoolWrapper>
+    fun getAllPoolFunction(): Single<List<CurrentPool>>
 
     @GET("donateToPool")
     fun donateToPool(@Query("donorId") donorId: String, @Query("amount") amount: Int): Single<ResultWrapper>

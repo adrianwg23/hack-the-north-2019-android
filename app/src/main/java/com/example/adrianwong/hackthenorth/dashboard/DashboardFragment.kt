@@ -9,12 +9,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.adrianwong.hackthenorth.MainApplication
 import com.example.adrianwong.hackthenorth.R
+import com.example.adrianwong.hackthenorth.datamodels.CurrentPool
 import com.example.adrianwong.hackthenorth.service.MyFirebaseMessagingService
 import kotlinx.android.synthetic.main.dashboard_row.*
-import kotlinx.android.synthetic.main.dashboard_row.view.*
 import kotlinx.android.synthetic.main.fragment_dashboard.*
 import javax.inject.Inject
 
@@ -30,6 +29,8 @@ class DashboardFragment : Fragment(), DashboardContract.View {
 
     }
 
+    private val adapter = DashboardAdapter()
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -40,11 +41,10 @@ class DashboardFragment : Fragment(), DashboardContract.View {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        recyclerview.adapter = adapter
         presenter.attachView(this)
-        
-        recyclerview.layoutManager = LinearLayoutManager(context)
 
-        recyclerview.adapter = DashboardAdapter(presenter.getHistoryList(), context) 
+
         super.onViewCreated(view, savedInstanceState)
     }
 
@@ -70,6 +70,9 @@ class DashboardFragment : Fragment(), DashboardContract.View {
         presenter.detachView()
         super.onDestroyView()
     }
-    
-    
+
+    override fun updateCurrentPoolList(currentPoolList: List<CurrentPool>) {
+        adapter.submitList(currentPoolList)
+    }
+
 }

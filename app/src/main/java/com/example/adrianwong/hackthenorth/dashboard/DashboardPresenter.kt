@@ -25,23 +25,16 @@ class DashboardPresenter(private val repo: RepositoryImpl) : DashboardContract.P
                 })
         )
 
-    }
-
-    override fun getHistoryList(): ArrayList<CurrentPool> {
-        var list = ArrayList<CurrentPool>()
-        disposables.add(
-            repo.getAllPoolFunction()
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe({ result ->
-                    Log.d("henlo", "success")
-                    list = result.allPoolArrayList
-                }, {
-                    Log.d("henlo", it.localizedMessage)
-                })
+        disposables.add(repo.getAllPoolFunction()
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe ({
+                view.updateCurrentPoolList(it)
+            }, {
+                Log.d("henlo", it.localizedMessage)
+            })
         )
 
-        return list
     }
 
     fun detachView() {

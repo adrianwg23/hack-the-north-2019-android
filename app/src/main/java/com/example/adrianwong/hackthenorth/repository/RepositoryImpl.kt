@@ -11,7 +11,7 @@ class RepositoryImpl(private val apiService: ApiService) {
         return apiService.getCurrentPoolFunction().toObservable()
     }
 
-    fun getAllPoolFunction(): Observable<AllPoolWrapper> {
+    fun getAllPoolFunction(): Observable<List<CurrentPool>> {
         return apiService.getAllPoolFunction().toObservable()
     }
 

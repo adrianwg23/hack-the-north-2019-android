@@ -1,49 +1,42 @@
 package com.example.adrianwong.hackthenorth.dashboard
 
-import android.content.Context
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.adrianwong.hackthenorth.R
 import com.example.adrianwong.hackthenorth.datamodels.CurrentPool
-import kotlinx.android.synthetic.main.dashboard_row.view.*
-import android.widget.TextView
 import kotlinx.android.synthetic.main.dashboard_all_pool.view.*
 
-import kotlinx.android.extensions.LayoutContainer
-import kotlinx.android.synthetic.main.dashboard_row.view.live_count
 
+class DashboardAdapter : ListAdapter<CurrentPool, DashboardAdapter.CurrentPoolViewHolder>(CurrentPoolDiffUtilCallback()) {
 
-class DashboardAdapter(
-    private val chaptersList: ArrayList<CurrentPool>,
-    private val context: Context?
-) :
-    RecyclerView.Adapter<DashboardAdapter.ViewHolder>() {
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return ViewHolder(
-            LayoutInflater.from(context).inflate(
-                R.layout.dashboard_all_pool,
-                parent,
-                false
-            )
-        )
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CurrentPoolViewHolder {
+        val inflater = LayoutInflater.from(parent.context)
+        return CurrentPoolViewHolder(inflater.inflate(R.layout.dashboard_all_pool, parent, false))
     }
 
-    override fun getItemCount(): Int {
-        return chaptersList.size
+    override fun onBindViewHolder(holder: CurrentPoolViewHolder, position: Int) {
+        val currentPool = getItem(position)
+        holder.bind(currentPool)
     }
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.chapterName?.text = chaptersList.get(position).totalAmount.toString()
-        holder.chapterDate?.text = chaptersList.get(position).date
+    inner class CurrentPoolViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
+        fun bind(currentPool: CurrentPool) {
+            itemView.live_count.text = currentPool.totalAmount.toString()
+            itemView.date.text = currentPool.date
+        }
+    }
+}
 
+class CurrentPoolDiffUtilCallback : DiffUtil.ItemCallback<CurrentPool>() {
+    override fun areItemsTheSame(oldItem: CurrentPool, newItem: CurrentPool): Boolean {
+        return oldItem.date == newItem.date
     }
 
-    class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val chapterName = itemView.live_count
-        val chapterDate = itemView.date
+    override fun areContentsTheSame(oldItem: CurrentPool, newItem: CurrentPool): Boolean {
+        return oldItem == newItem
     }
-
 }

@@ -3,7 +3,7 @@ package com.example.adrianwong.hackthenorth.datamodels
 import com.google.gson.annotations.SerializedName
 
 data class AllPoolWrapper(
-    var allPoolArrayList: ArrayList<CurrentPool>
+    var allPoolArrayList: List<CurrentPool>
 )
 
 data class ResultWrapper(
