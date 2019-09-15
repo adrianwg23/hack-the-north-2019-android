@@ -1,6 +1,7 @@
 package com.example.adrianwong.hackthenorth.dashboard
 
 import android.util.Log
+import com.example.adrianwong.hackthenorth.datamodels.CurrentPool
 import com.example.adrianwong.hackthenorth.repository.RepositoryImpl
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
@@ -25,6 +26,10 @@ class DashboardPresenter(private val repo: RepositoryImpl) : DashboardContract.P
                 })
         )
         
+    }
+
+    override fun getHistoryList(list: ArrayList<CurrentPool>) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
 }

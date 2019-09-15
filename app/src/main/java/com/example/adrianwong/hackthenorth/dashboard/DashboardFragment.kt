@@ -20,7 +20,6 @@ import javax.inject.Inject
 
 
 class DashboardFragment : Fragment(), DashboardContract.View {
-    val animals: ArrayList<String> = ArrayList()
 
     @Inject lateinit var presenter: DashboardPresenter
     private val broadcastReceiver = object : BroadcastReceiver() {
@@ -45,7 +44,7 @@ class DashboardFragment : Fragment(), DashboardContract.View {
         
         recyclerview.layoutManager = LinearLayoutManager(context)
 
-        recyclerview.adapter = DashboardAdapter(animals, context) 
+        recyclerview.adapter = DashboardAdapter(presenter.getHistoryList(), context) 
         super.onViewCreated(view, savedInstanceState)
     }
 

@@ -1,5 +1,7 @@
 package com.example.adrianwong.hackthenorth.dashboard
 
+import com.example.adrianwong.hackthenorth.datamodels.CurrentPool
+
 interface DashboardContract {
 
     interface View {
@@ -9,6 +11,7 @@ interface DashboardContract {
 
     interface Presenter {
         fun attachView(view: View)
-
+        
+        fun getHistoryList() : ArrayList<CurrentPool>
     }
 }

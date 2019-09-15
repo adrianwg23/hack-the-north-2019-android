@@ -6,10 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.adrianwong.hackthenorth.R
-import kotlinx.android.synthetic.main.dashboard_row.view.*
-import kotlinx.android.synthetic.main.fragment_dashboard.view.*
+import com.example.adrianwong.hackthenorth.datamodels.CurrentPool
 
-class DashboardAdapter(val items: ArrayList<String>, val context: Context?) :
+class DashboardAdapter(val items: ArrayList<CurrentPool>, val context: Context?) :
     RecyclerView.Adapter<DashboardAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -25,12 +24,14 @@ class DashboardAdapter(val items: ArrayList<String>, val context: Context?) :
     override fun getItemCount(): Int = items.size
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        //holder.bind(items[position])
-        //holder?.tvAnimalType?.text = items.get(position)
+        holder.bind(items[position])
     }
 
 
     inner class ViewHolder(view: View) :
         RecyclerView.ViewHolder(view) {
+        fun bind(item: CurrentPool) {
+            
+        }
     }
 }
