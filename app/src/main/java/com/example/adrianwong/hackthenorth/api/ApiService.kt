@@ -10,6 +10,9 @@ interface ApiService {
     @GET("getCurrentPool") //current pool of today total val
     fun getCurrentPoolFunction(): Single<CurrentPool>
 
+    @GET("getDonorInfo") //current pool of today total val
+    fun getDonorInfo(@Query("donorId") donorId: String): Single<DonorInfo>
+
     @GET("getAllPool") //history of above
     fun getAllPoolFunction(): Single<List<CurrentPool>>
 

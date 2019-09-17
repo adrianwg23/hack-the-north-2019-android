@@ -21,30 +21,30 @@ class MainApplication : Application() {
         super.onCreate()
 
         mainComponent = DaggerMainComponent.builder()
-            .build()
+                .build()
 
         FirebaseInstanceId.getInstance().instanceId
-            .addOnCompleteListener(OnCompleteListener { task ->
-                if (!task.isSuccessful) {
-                    Log.w("MainApplicationTag", "getInstanceId failed", task.exception)
-                    return@OnCompleteListener
-                }
+                .addOnCompleteListener(OnCompleteListener { task ->
+                    if (!task.isSuccessful) {
+                        Log.w("MainApplicationTag", "getInstanceId failed", task.exception)
+                        return@OnCompleteListener
+                    }
 
-                // Get new Instance ID token
-                val token = task.result?.token
+                    // Get new Instance ID token
+                    val token = task.result?.token
 
-                // Log and toast
-                Log.d("MainApplicationTag", token)
-            })
+                    // Log and toast
+                    Log.d("MainApplicationTag", token)
+                })
 
         FirebaseMessaging.getInstance().subscribeToTopic("livePool")
-            .addOnCompleteListener { task ->
-                var msg = "subscribed"
-                if (!task.isSuccessful) {
-                    msg = "failed"
+                .addOnCompleteListener { task ->
+                    var msg = "subscribed"
+                    if (!task.isSuccessful) {
+                        msg = "failed"
+                    }
+                    Log.d("MainApplicationTag", msg)
                 }
-                Log.d("MainApplicationTag", msg)
-            }
     }
 
     fun createPoolSubcomponent(): PoolSubcomponent {

@@ -20,6 +20,7 @@ class IndividualPresenter(private val repo: RepositoryImpl) : IndividualContract
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe ({ result ->
                 Log.d("yeet", "result: ${result.result}")
+                individualView.hideSpinner()
                 individualView.makeToast("success")
             }, {
                 individualView.makeToast("fail")

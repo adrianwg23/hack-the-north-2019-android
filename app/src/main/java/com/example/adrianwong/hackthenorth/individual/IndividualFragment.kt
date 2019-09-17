@@ -57,7 +57,7 @@ class IndividualFragment : Fragment(), IndividualContract.View {
                 receiverUUID?.let {
                     if (it != "") {
                         Log.d("IndividualFragTag", it)
-                        receiverUUID.trim()
+                        val trimmedId = receiverUUID.trim()
                         individualPayBottomSheet.onSubmitMoney = {
                             if (it == 0) {
                                 Snackbar.make(
@@ -66,8 +66,9 @@ class IndividualFragment : Fragment(), IndividualContract.View {
                                 )
                             } else {
                                 val donatorUUID = (activity!!.application as MainApplication).UUID
-                                Log.d("IndividualFragTag", "uuid: $donatorUUID, receiverId: $receiverUUID, amount: $it")
-                                presenter.onSubmitIndividualDonation(donatorUUID, receiverUUID, it)
+                                Log.d("IndividualFragTag", "uuid: $donatorUUID, receiverId: $trimmedId, amount: $it")
+                                presenter.onSubmitIndividualDonation(donatorUUID, trimmedId, it)
+                                progress_bar.visibility = View.VISIBLE
                                 individualPayBottomSheet.dismiss()
                             }
                         }
@@ -80,6 +81,10 @@ class IndividualFragment : Fragment(), IndividualContract.View {
                 Toast.makeText(activity, "Please try again", Toast.LENGTH_LONG).show()
             }
         }
+    }
+
+    override fun hideSpinner() {
+        progress_bar.visibility = View.GONE
     }
 
     override fun onDestroyView() {

@@ -9,6 +9,8 @@ interface PoolContract {
 
         fun makeToast(value: String)
 
+        fun hideSpinner()
+
     }
 
     interface Presenter {

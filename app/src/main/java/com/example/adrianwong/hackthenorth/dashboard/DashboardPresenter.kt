@@ -2,6 +2,7 @@ package com.example.adrianwong.hackthenorth.dashboard
 
 import android.util.Log
 import com.example.adrianwong.hackthenorth.datamodels.CurrentPool
+import com.example.adrianwong.hackthenorth.datamodels.DonorInfo
 import com.example.adrianwong.hackthenorth.repository.RepositoryImpl
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
@@ -24,17 +25,18 @@ class DashboardPresenter(private val repo: RepositoryImpl) : DashboardContract.P
                     Log.d("henlo", it.localizedMessage)
                 })
         )
+    }
 
-        disposables.add(repo.getAllPoolFunction()
+    fun getDonorInfo(donorId: String) {
+        disposables.add(repo.getDonorInfo(donorId)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe ({
-                view.updateCurrentPoolList(it)
+                dashboardView.updateCurrentDonorInfo(it?.pastDonations?.reversed())
             }, {
                 Log.d("henlo", it.localizedMessage)
             })
         )
-
     }
 
     fun detachView() {

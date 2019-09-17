@@ -20,6 +20,7 @@ class PoolPresenter(private val repo: RepositoryImpl) : PoolContract.Presenter {
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe ({ result ->
+                poolView.hideSpinner()
                 poolView.makeToast(result.result)
             }, {
                 poolView.makeToast("fail")

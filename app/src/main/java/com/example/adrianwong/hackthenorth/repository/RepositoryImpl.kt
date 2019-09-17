@@ -34,4 +34,8 @@ class RepositoryImpl(private val apiService: ApiService) {
     fun merchantMinus(recieverId: String, amount: Int): Single<ResultWrapper> {
         return apiService.merchantMinus(recieverId, amount.toString())
     }
+
+    fun getDonorInfo(donorId: String): Single<DonorInfo> {
+        return apiService.getDonorInfo(donorId)
+    }
 }

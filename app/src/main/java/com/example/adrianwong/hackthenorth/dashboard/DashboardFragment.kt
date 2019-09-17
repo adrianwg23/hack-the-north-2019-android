@@ -9,18 +9,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.DividerItemDecoration
 import com.example.adrianwong.hackthenorth.MainApplication
 import com.example.adrianwong.hackthenorth.R
-import com.example.adrianwong.hackthenorth.datamodels.CurrentPool
+import com.example.adrianwong.hackthenorth.datamodels.DonationsInfo
 import com.example.adrianwong.hackthenorth.service.MyFirebaseMessagingService
 import kotlinx.android.synthetic.main.dashboard_row.*
 import kotlinx.android.synthetic.main.fragment_dashboard.*
 import javax.inject.Inject
 
-
 class DashboardFragment : Fragment(), DashboardContract.View {
 
-    @Inject lateinit var presenter: DashboardPresenter
+    @Inject
+    lateinit var presenter: DashboardPresenter
     private val broadcastReceiver = object : BroadcastReceiver() {
         override fun onReceive(context: Context?, intent: Intent?) {
             val livePoolValue = intent?.extras?.get(MyFirebaseMessagingService.EXTRA_FCM_MESSAGE)
@@ -32,8 +33,8 @@ class DashboardFragment : Fragment(), DashboardContract.View {
     private val adapter = DashboardAdapter()
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+            inflater: LayoutInflater, container: ViewGroup?,
+            savedInstanceState: Bundle?
     ): View? {
         (activity?.application as MainApplication).createDashboardSubcomponent().inject(this)
         // Inflate the layout for this fragment
@@ -41,8 +42,13 @@ class DashboardFragment : Fragment(), DashboardContract.View {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        val dividerItemDecoration = DividerItemDecoration(recyclerview.getContext(),
+                DividerItemDecoration.VERTICAL)
+        recyclerview.addItemDecoration(dividerItemDecoration)
         recyclerview.adapter = adapter
+        val UUID = (activity!!.application as MainApplication).UUID
         presenter.attachView(this)
+        presenter.getDonorInfo(UUID)
 
 
         super.onViewCreated(view, savedInstanceState)
@@ -64,15 +70,15 @@ class DashboardFragment : Fragment(), DashboardContract.View {
     override fun updateCurrentPool(currentPool: Int) {
         live_count.text = "$" + currentPool.toString()
     }
-    
+
     override fun onDestroyView() {
         (activity?.application as MainApplication).releaseDashboardSubcomponent()
         presenter.detachView()
         super.onDestroyView()
     }
 
-    override fun updateCurrentPoolList(currentPoolList: List<CurrentPool>) {
-        adapter.submitList(currentPoolList)
+    override fun updateCurrentDonorInfo(donationsInfo: List<DonationsInfo>?) {
+        adapter.submitList(donationsInfo)
     }
 
 }

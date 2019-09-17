@@ -8,10 +8,11 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.adrianwong.hackthenorth.R
 import com.example.adrianwong.hackthenorth.datamodels.CurrentPool
+import com.example.adrianwong.hackthenorth.datamodels.DonationsInfo
 import kotlinx.android.synthetic.main.dashboard_all_pool.view.*
 
 
-class DashboardAdapter : ListAdapter<CurrentPool, DashboardAdapter.CurrentPoolViewHolder>(CurrentPoolDiffUtilCallback()) {
+class DashboardAdapter : ListAdapter<DonationsInfo, DashboardAdapter.CurrentPoolViewHolder>(DonationsInfoDiffUtilCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CurrentPoolViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -24,19 +25,19 @@ class DashboardAdapter : ListAdapter<CurrentPool, DashboardAdapter.CurrentPoolVi
     }
 
     inner class CurrentPoolViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
-        fun bind(currentPool: CurrentPool) {
-            itemView.live_count.text = currentPool.totalAmount.toString()
-            itemView.date.text = currentPool.date
+        fun bind(donationsInfo: DonationsInfo) {
+            itemView.donation_amount.text = "$" + donationsInfo.amount.toString()
+            itemView.date.text = donationsInfo.date
         }
     }
 }
 
-class CurrentPoolDiffUtilCallback : DiffUtil.ItemCallback<CurrentPool>() {
-    override fun areItemsTheSame(oldItem: CurrentPool, newItem: CurrentPool): Boolean {
+class DonationsInfoDiffUtilCallback : DiffUtil.ItemCallback<DonationsInfo>() {
+    override fun areItemsTheSame(oldItem: DonationsInfo, newItem: DonationsInfo): Boolean {
         return oldItem.date == newItem.date
     }
 
-    override fun areContentsTheSame(oldItem: CurrentPool, newItem: CurrentPool): Boolean {
+    override fun areContentsTheSame(oldItem: DonationsInfo, newItem: DonationsInfo): Boolean {
         return oldItem == newItem
     }
 }

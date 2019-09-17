@@ -29,9 +29,11 @@ class MerchantActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         setContentView(R.layout.activity_merchant)
 
+        (application as MainApplication).mainComponent.inject(this)
+
         scanning_to_charge.setOnClickListener {
             val intent = Intent(this, BarCodeScannerActivity::class.java)
-            startActivity(intent)
+            startActivityForResult(intent, MERCHANT_BARCODE_RESULT)
             //Todo: get barcode uuid, package it along with the value of the item purchased (eg: -5)
         }
         super.onCreate(savedInstanceState)

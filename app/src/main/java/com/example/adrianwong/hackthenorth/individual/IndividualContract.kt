@@ -5,6 +5,7 @@ interface IndividualContract {
     interface View {
         fun makeToast(value: String)
 
+        fun hideSpinner()
     }
 
     interface Presenter {

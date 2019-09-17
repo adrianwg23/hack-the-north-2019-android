@@ -90,6 +90,7 @@ class PoolFragment : Fragment(), PoolContract.View {
             } else {
                 val UUID = (activity!!.application as MainApplication).UUID
                 Log.d("PoolFragTag", "uuid: $UUID")
+                progress_bar.visibility = View.VISIBLE
                 presenter.submitDonation(UUID, moneyAmount)
             }
         }
@@ -97,6 +98,10 @@ class PoolFragment : Fragment(), PoolContract.View {
 
     override fun makeToast(value: String) {
         Toast.makeText(this.context, value, Toast.LENGTH_LONG).show()
+    }
+
+    override fun hideSpinner() {
+        progress_bar.visibility = View.GONE
     }
 
     fun showCreateCategoryDialog() {
